@@ -55,10 +55,15 @@ const readUsers = async () => {
     console.log("db.users", db.users)
     try {
         const users = await db.users.findAll({
-            include: [{
-                model: db.userDetails,
-                as: 'userDetails',
-            }],
+            include: [
+                {
+                    model: db.userDetails,
+                    as: 'userDetails',
+                }, {
+                    model: db.posts,
+                    as: 'posts',
+                }
+            ],
         })
         console.log("users", JSON.stringify(users, null, 2))
 
