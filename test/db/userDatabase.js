@@ -65,7 +65,6 @@ const readUsers = async () => {
         const data = users
         const msg = users.length !== 0 ? "Successfully read Users" : "Successfully read Users but empty"
 
-
         // return res.status(200).json({ isSuccess: true, msg, data })
         console.log({ isSuccess: true, msg, data })
     } catch (error) {
