@@ -50,6 +50,7 @@ const createUser = async () => {
     }
 }
 
+
 const readUsers = async () => {
     console.log("start read_users")
     try {
