@@ -25,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'groups'
       });
     }
+
+    aaaa() {
+      console.log("validPassword")
+      const aaa = this.name + "aaaa"
+      return aaa;
+    }
   }
   users.init({
     username: DataTypes.STRING,
@@ -33,5 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'users',
   });
+
+
   return users;
 };

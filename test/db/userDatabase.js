@@ -5,8 +5,8 @@ async function startUser() {
     console.log("start_user")
 
     // createUser()
-    readUsers()
-    // readUsers2()
+    // readUsers()
+    readUsers2()
     // readUsers3()
     // readUser()
     // searchUsers()
@@ -84,29 +84,15 @@ const readUsers = async () => {
 const readUsers2 = async () => {
     console.log("start readUsers2")
     try {
-        const users = await User.findAll({ include: 'posts' })
+        const user = await db.users.findByPk(1)
         // console.log("users", JSON.stringify(users, null, 2))
+        // console.log({ user })
 
-        let arrangedResData = [];
-        users.forEach(row => {
-            arrangedResData.push(
-                {
-                    "id": row.id,
-                    "name": row.name,
-                    "email": row.email,
-                    "password": row.password,
-                    "role": row.role,
-                    "avator": row.avator ? row.avator : "https://www.publicdomainpictures.net/pictures/300000/nahled/empty-white-room.jpg"
-                }
-            );
-        });
-        // console.log("arrangedResData", JSON.stringify(arrangedResData, null, 2))
-
-        const data = arrangedResData
-        const msg = users.length !== 0 ? "Successfully read Users" : "Successfully read Users but empty"
+        const aaaa = user.aaaa()
+        console.log({ aaaa })
 
         // return res.status(200).json({ isSuccess: true, msg, data })
-        console.log({ isSuccess: true, msg, data })
+        // console.log({ isSuccess: true, msg, data })
     } catch (error) {
         console.log({ isSuccess: false, error })
     }
