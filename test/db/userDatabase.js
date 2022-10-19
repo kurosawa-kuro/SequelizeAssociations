@@ -52,7 +52,6 @@ const createUser = async () => {
 
 const readUsers = async () => {
     console.log("start read_users")
-    console.log("db.users", db.users)
     try {
         const users = await db.users.findAll({
             include: [
