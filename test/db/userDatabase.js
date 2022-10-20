@@ -60,6 +60,9 @@ const readUsers = async () => {
                 {
                     model: db.UserDetail,
                     as: 'userDetail',
+                }, {
+                    model: db.Post,
+                    as: 'posts',
                 },
 
             ],
