@@ -3,44 +3,31 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Group extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasOne(models.UserDetail, {
-        foreignKey: 'user_id',
-        as: 'userDetail',
-        onDelete: 'CASCADE'
-      });
-      User.hasMany(models.Post, {
-        foreignKey: 'user_id',
-        as: 'posts'
-      });
-      User.belongsToMany(models.Group, {
-        foreignKey: 'user_id',
+      Group.belongsToMany(models.User, {
+        foreignKey: 'group_id',
         through: 'users_groups',
-        as: 'groups'
+        as: 'user'
       });
     }
   }
-  User.init({
+  Group.init({
     name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    admin: DataTypes.BOOLEAN,
-    avator: DataTypes.STRING,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'User',
-    tableName: 'users',
+    modelName: 'Group',
+    tableName: 'groups',
     timestamps: false,
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   });
-  return User;
+  return Group;
 };
