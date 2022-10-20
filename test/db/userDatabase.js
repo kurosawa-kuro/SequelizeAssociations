@@ -60,12 +60,15 @@ const readUsers = async () => {
                 {
                     model: db.UserDetail,
                     as: 'userDetail',
+                    attributes: ['phone', 'adress']
                 }, {
                     model: db.Post,
                     as: 'posts',
+                    attributes: ['name', 'content', 'image']
                 }, {
                     model: db.Group,
                     as: 'groups',
+                    attributes: ['name']
                 },
             ],
         })
