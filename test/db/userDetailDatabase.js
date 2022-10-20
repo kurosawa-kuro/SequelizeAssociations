@@ -6,7 +6,7 @@ async function startUser() {
     // console.log({ User })
 
     // createUser()
-    readUsers()
+    readUserDetails()
     // readUsers2()
     // readUsers3()
     // readUser()
@@ -52,18 +52,10 @@ const createUser = async () => {
 }
 
 
-const readUsers = async () => {
-    console.log("start read_users")
+const readUserDetails = async () => {
+    console.log("start readUserDetails")
     try {
-        const users = await db.User.findAll({
-            include: [
-                {
-                    model: db.UserDetail,
-                    as: 'userDetails',
-                },
-
-            ],
-        })
+        const users = await db.UserDetail.findAll()
         console.log("users", JSON.stringify(users, null, 2))
 
         const data = users
