@@ -1,12 +1,13 @@
-const { Op } = require("sequelize");
-const db = require("../../db/models")
+// const { Op } = require("sequelize");
+const db = require("../../db/models/index")
 
 async function startUser() {
     console.log("start_user")
+    // console.log({ User })
 
     // createUser()
     // readUsers()
-    readUsers2()
+    // readUsers2()
     // readUsers3()
     // readUser()
     // searchUsers()
@@ -54,21 +55,7 @@ const createUser = async () => {
 const readUsers = async () => {
     console.log("start read_users")
     try {
-        const users = await db.users.findAll({
-            include: [
-                {
-                    model: db.userDetails,
-                    as: 'userDetails',
-                }, {
-                    model: db.posts,
-                    as: 'posts',
-                }, {
-                    model: db.groups,
-                    as: 'groups',
-                }
-
-            ],
-        })
+        const users = await db.User.findAll()
         console.log("users", JSON.stringify(users, null, 2))
 
         const data = users
