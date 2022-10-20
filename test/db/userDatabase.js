@@ -6,7 +6,7 @@ async function startUser() {
     // console.log({ User })
 
     // createUser()
-    // readUsers()
+    readUsers()
     // readUsers2()
     // readUsers3()
     // readUser()
