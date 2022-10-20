@@ -59,7 +59,7 @@ const readUsers = async () => {
             include: [
                 {
                     model: db.UserDetail,
-                    as: 'userDetails',
+                    as: 'userDetail',
                 },
 
             ],

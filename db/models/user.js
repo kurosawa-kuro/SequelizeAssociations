@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasOne(models.UserDetail, {
         foreignKey: 'user_id',
-        as: 'userDetails',
+        as: 'userDetail',
         onDelete: 'CASCADE'
       });
     }
