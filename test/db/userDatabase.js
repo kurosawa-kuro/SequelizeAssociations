@@ -64,7 +64,6 @@ const readUsers = async () => {
                     model: db.Post,
                     as: 'posts',
                 },
-
             ],
         })
         console.log("users", JSON.stringify(users, null, 2))
