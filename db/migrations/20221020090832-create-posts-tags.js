@@ -2,34 +2,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users_groups', {
+    await queryInterface.createTable('posts_tags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      post_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'posts', key: 'id' },
         onDelete: 'CASCADE',
       },
-      groupId: {
+      tag_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'groups', key: 'id' },
+        references: { model: 'tags', key: 'id' },
         onDelete: 'CASCADE',
       },
-      createdAt: {
-        allowNull: false,
+      created_at: {
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
+      updated_at: {
         type: Sequelize.DATE
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users_groups');
+    await queryInterface.dropTable('PostsTags');
   }
 };

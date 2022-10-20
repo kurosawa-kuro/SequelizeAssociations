@@ -1,12 +1,12 @@
 // const { Op } = require("sequelize");
 const db = require("../../db/models/index")
 
-async function startUser() {
-    console.log("start_user")
+async function startPost() {
+    console.log("start_post")
     // console.log({ User })
 
     // createUser()
-    readUsers()
+    readPosts()
     // readUsers2()
     // readUsers3()
     // readUser()
@@ -52,27 +52,21 @@ const createUser = async () => {
 }
 
 
-const readUsers = async () => {
-    console.log("start read_users")
+const readPosts = async () => {
+    console.log("start readPosts")
     try {
-        const users = await db.User.findAll({
+        const posts = await db.Post.findAll({
             include: [
                 {
-                    model: db.UserDetail,
-                    as: 'userDetail',
-                }, {
-                    model: db.Post,
-                    as: 'posts',
-                }, {
-                    model: db.Group,
-                    as: 'groups',
+                    model: db.Tag,
+                    as: 'tags',
                 },
             ],
         })
-        console.log("users", JSON.stringify(users, null, 2))
+        console.log("posts", JSON.stringify(posts, null, 2))
 
-        const data = users
-        const msg = users.length !== 0 ? "Successfully read Users" : "Successfully read Users but empty"
+        const data = posts
+        const msg = posts.length !== 0 ? "Successfully read Users" : "Successfully read Users but empty"
 
         // return res.status(200).json({ isSuccess: true, msg, data })
         console.log({ isSuccess: true, msg, data })
@@ -248,6 +242,6 @@ const truncateUsers = async () => {
 }
 
 module.exports = {
-    startUser
+    startPost
 }
 
